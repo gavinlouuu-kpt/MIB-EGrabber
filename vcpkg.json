@@ -3,6 +3,7 @@
     "ftxui",
     "matplotplusplus",
     "opencv4",
-    "nlohmann-json"
+    "nlohmann-json",
+    "gtest"
   ]
 }

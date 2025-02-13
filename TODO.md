@@ -3,7 +3,18 @@
 ## 2025/2/12
 ### Tests
 - [ ] Tool to test how the opencv algo performs given an ROI and config
-- [ ] Tool to create standard data i.e., how many valid/gated/doublet in the image given an ROI. 
+- [ ] Tool to create standard data i.e., how many valid/gated/doublet in the image given an ROI
+- [ ] Implement unit tests for image processing core functions
+  - [ ] Test image thresholding
+  - [ ] Test contour detection
+  - [ ] Test circularity calculations
+- [ ] Implement unit tests for MIB grabber
+  - [ ] Test frame acquisition
+  - [ ] Test buffer management
+- [ ] Create mock objects for camera interface testing
+- [ ] Add integration tests for the complete processing pipeline
+- [ ] Setup CI/CD pipeline for automated testing
+
 ### Features
 - [x] Include trigger of 1 microsecond upon valid image
 - [x] Hybrid sample for testing egrabber function with images from file to test trigger without samples

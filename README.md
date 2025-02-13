@@ -52,22 +52,24 @@ The project is organized into several key components:
 ## Features
 
 1. **Mock Sample**: Allows processing of pre-recorded images for testing and development purposes.
-2. **Live Sample**: (Placeholder) For future implementation of real-time image capture and processing.
-3. **Convert Saved Images**: Converts binary image files to a standard format for further analysis.
+2. **Live Sample**: Real-time image capture and processing with camera hardware.
+3. **Hybrid Sample**: Test environment using image files to simulate camera behavior and test triggering.
+4. **Convert Saved Images**: Converts binary image files to a standard format for further analysis.
 
 ## Usage
 
 1. Run the application.
 2. Choose from the following options in the menu:
    - Run Mock Sample
-   - Run Live Sample (not yet implemented)
+   - Run Live Sample
+   - Run Hybrid Sample
    - Convert Saved Images
    - Exit
 
-### Running a Mock Sample
+### Running Samples (Mock/Live/Hybrid)
 
-1. Select "Run Mock Sample" from the menu.
-2. Enter the path to the directory containing the sample images when prompted.
+1. Select the desired sample mode from the menu.
+2. For Mock Sample: Enter the path to the directory containing the sample images when prompted.
 3. The program will process the images, displaying results in real-time.
 4. Use keyboard controls during processing:
    - ESC: Stop capture
@@ -76,6 +78,29 @@ The project is organized into several key components:
    - 'd': Move to newer frame
    - 'q': Clear circularities vector
    - 's': Save current frames
+   - 'b': Acquire background (when paused)
+   - 'r': Start/Stop saving results
+
+### Real-time Display Features
+
+The application provides real-time monitoring of various metrics:
+
+1. **Processing Statistics**
+   - Processing time (average/max/min)
+   - Current Camera FPS
+   - Number of images in queue
+   - Exposure time
+
+2. **Analysis Information**
+   - ROI size and position
+   - Circularity statistics (min/max/mean)
+   - Detailed rejection reasons for cells
+   - Scatter plot with density visualization
+
+3. **Image Display**
+   - Original image with overlay
+   - Maintains aspect ratio
+   - Intermediate processing views with color-coded error states
 
 ### Converting Saved Images
 
@@ -91,8 +116,42 @@ The project is organized into several key components:
 - Matplotplusplus (requires gnuplot)
 - OpenCV
 - nlohmann/json
+- Google Test (for unit testing)
 
 **Note:** Gnuplot needs to be installed separately and added to your system's PATH. After installation, restart your computer to ensure the plotting function works correctly.
+
+## Testing
+
+The project uses Google Test framework for unit testing. To run the tests:
+
+1. Build the project as described above
+2. From the build directory, you can run tests in two ways:
+
+   ```bash
+   # Run all tests using CTest
+   ctest --output-on-failure
+
+   # OR run the test executable directly for more detailed output
+   ./tests/Debug/unit_tests.exe    # Windows
+   ./tests/unit_tests             # Linux/Mac
+   ```
+
+### Adding New Tests
+
+Tests are located in the `tests/` directory. The main test files are:
+- `test_image_processing.cpp`: Tests for image processing functions
+- `test_mib_grabber.cpp`: Tests for MIB grabber functionality
+
+To add new tests:
+1. Create a new test file in the `tests/` directory
+2. Add the file to `tests/CMakeLists.txt`
+3. Follow the Google Test framework pattern:
+   ```cpp
+   TEST_F(TestSuiteName, TestName) {
+       // Your test code here
+       EXPECT_EQ(expected, actual);
+   }
+   ```
 
 ## Building
 
@@ -100,8 +159,12 @@ The project is organized into several key components:
 2. Run `cmake --preset=default` in the project root directory.
 3. Build the project using your preferred method (e.g., Visual Studio, command-line tools).
 
+## Configuration
+
+The application supports hot-reloading of configuration parameters through a JSON file. When in display mode, you can modify the configuration file to tune parameters in real-time.
+
 ## Notes
 
-- The live sampling feature is not yet implemented.
-- Ensure all dependencies are properly installed before building the project.
+- Configuration changes require re-entering the display mode to take effect
+- The system supports 1 microsecond trigger pulses for external hardware synchronization
 - For any issues or questions, please refer to the project documentation or contact the development team.
