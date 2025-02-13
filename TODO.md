@@ -2,7 +2,10 @@
 
 ## 2025/2/12
 ### Tests
-- [ ] Tool to test how the opencv algo performs given an ROI and config
+
+- [x] Created circularity visualizer tool
+- [x] Added ability to save metrics and coordinates
+- [x] Added interactive deformation control
 - [ ] Tool to create standard data i.e., how many valid/gated/doublet in the image given an ROI
 - [ ] Implement unit tests for image processing core functions
   - [ ] Test image thresholding
@@ -96,3 +99,10 @@ Note: Short pulses to trigger signal generator is working but the waveform is de
 - Save cell image, circularities
   - Scatter plot is real time (not full extent of the data record)
 - Save entire experiment ~20GB of data ~100,000 images
+
+### Potential Improvements for Circularity Visualizer
+- [ ] Add grid lines for better visual reference
+- [ ] Add ability to export data in different formats
+- [ ] Add vertical stretching option
+- [ ] Add more shape deformation patterns
+- [ ] Add batch processing mode for generating test datasets

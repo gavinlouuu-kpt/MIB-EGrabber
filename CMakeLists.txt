@@ -122,3 +122,6 @@ endforeach()
 
 # Add testing directory
 add_subdirectory(tests)
+
+# Add tools directory
+add_subdirectory(tools)

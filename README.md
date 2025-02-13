@@ -168,3 +168,29 @@ The application supports hot-reloading of configuration parameters through a JSO
 - Configuration changes require re-entering the display mode to take effect
 - The system supports 1 microsecond trigger pulses for external hardware synchronization
 - For any issues or questions, please refer to the project documentation or contact the development team.
+
+## Tools
+
+### Circularity Visualizer
+A tool to visualize and understand how circularity/deformability metrics change with shape deformation:
+
+1. Run the visualizer:
+   ```bash
+   ./tools/circularity_visualizer/circularity_visualizer
+   ```
+
+2. Features:
+   - Interactive horizontal stretching using slider
+   - Real-time display of:
+     - Circularity
+     - Deformability
+     - Area
+     - Area Ratio
+   - Keyboard controls:
+     - 's': Save current shape (PNG) with metrics (TXT)
+     - 'r' or Space: Reset to perfect circle
+     - ESC: Exit
+
+3. Output files:
+   - `shape_stretch{value}.png`: Image of the shape
+   - `shape_stretch{value}_metrics.txt`: Contains metrics and contour coordinates
